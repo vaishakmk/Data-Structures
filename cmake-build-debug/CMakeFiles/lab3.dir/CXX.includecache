@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stock.h
+iostream
+-
+sstream
+-
+
+/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stocklist.cpp
+stock.h
+/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stock.h
+stocklist.h
+/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stocklist.h
+fstream
+-
+sstream
+-
+
+/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stocklist.h
+stock.h
+/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stock.h
+
