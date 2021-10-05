@@ -11,11 +11,16 @@ stocklist::stocklist() {
     tail = NULL;
 }
 
+int stocklist::getLength() {
+    return this->length;
+}
+
 void stocklist::addtoList(stockNode* s) {
     if(head==NULL)
     {
         s->prev=s->next=NULL;
-        head=tail=s;cout<<"Node successfully added"<<endl;
+        head=tail=s;
+        this->length = this->length + 1;
         return;
     }
     else{
@@ -23,6 +28,7 @@ void stocklist::addtoList(stockNode* s) {
         s->prev=NULL;
         s->next->prev = s;
         head = s;
+        this->length = this->length + 1;
         return;
     }
 }
@@ -30,7 +36,7 @@ void stocklist::addtoList(stockNode* s) {
 bool stocklist::addusingFile(string filename) {
     ifstream fin;
     string ss;
-    stock s; string sym; int co,no;
+    stock s; string sym; double co;int no;
     fin.open(filename.c_str());
     if (!fin.is_open())  {cout<<"file error";cerr << "Error: " << strerror(errno);return(false);}// error checking needed
     while (!fin.eof()){
@@ -66,8 +72,18 @@ void stocklist::print_list()
 }
 
 stockNode* stocklist::mid_stock() {
-    stockNode *slow=head, *fast=head;
     int mid = 0;
+    if (this->length == 0) {
+        cout << "no items in the list" << endl;
+        return NULL;
+    }
+
+    if (this->length == 1) {
+        cout << "Only one item in the list. Mid = 0"<<endl;
+        return NULL;
+    }
+    stockNode *slow=head, *fast=head;
+
     while (fast != NULL) {
         slow = slow->next;
         fast = fast->next;
@@ -79,6 +95,15 @@ stockNode* stocklist::mid_stock() {
 }
 
 stockNode* stocklist::split_list() {
+    if (this->length == 0) {
+        cout << "No items in the list. Cannot split" << endl;
+        return NULL;
+    }
+
+    if (this->length == 1) {
+        cout << "Only one item in the list. Cannot Split"<<endl;
+        return NULL ;
+    }
     stockNode* mid = this->mid_stock();
     stocklist sl2;
     sl2.head = mid; sl2.tail=tail;

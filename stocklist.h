@@ -10,9 +10,11 @@ class stocklist {
 private:
     stockNode *head;
     stockNode *tail;
+    int length = 0;
 
 public:
     stocklist();
+    int getLength();
     void addtoList(stockNode*);
     bool addstock(stock);
     bool addusingFile(string filename);

@@ -23,7 +23,7 @@ using namespace std;
         setstock(s,c,n);
     }
 
-    void stock::setstock(string s, int c, int n) {
+    void stock::setstock(string s, double c, int n) {
         symbol = s;
         cost = c;
         num = n;

@@ -16,11 +16,11 @@ class stock {
 
 public:
     stock(string s="",int c=0 ,int n=0 );
-    void setstock(string s="",int c=0 ,int n=0 );
+    void setstock(string s="",double c=0 ,int n=0 );
 
 private:
     string symbol;
-    int cost;
+    double cost;
     int num;
 };
 

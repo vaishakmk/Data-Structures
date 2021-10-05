@@ -6,18 +6,16 @@
 
 #IncludeRegexTransform: 
 
-/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stock.h
-iostream
--
-sstream
--
-
-/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stocklist.cpp
+/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/main.cpp
 stock.h
 /Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stock.h
 stocklist.h
 /Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stocklist.h
-fstream
+iostream
+-
+
+/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stock.h
+iostream
 -
 sstream
 -
