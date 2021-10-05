@@ -14,6 +14,7 @@ private:
 public:
     stocklist();
     void addtoList(stockNode*);
+    bool addstock(stock);
     bool addusingFile(string filename);
     stockNode* mid_stock();
     stockNode* split_list();

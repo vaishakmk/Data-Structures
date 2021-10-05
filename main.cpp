@@ -10,8 +10,12 @@ int main() {
     cout<<s2<<endl;
     cout<<s1<<endl;
     stocklist sl = stocklist();
-    sl.addusingFile("/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stocks.txt");
+    sl.addstock(s2);
+    sl.addstock(s1);
     sl.print_list();
+    sl.addusingFile("/Users/vaishakkallampad/Desktop/PROGRAMS/lab3/stocks.txt");
     sl.mid_stock();
+    sl.print_list();
+
     sl.split_list();
 }

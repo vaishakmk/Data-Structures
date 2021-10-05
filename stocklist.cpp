@@ -45,6 +45,12 @@ fin.close();
 return(true);
 }
 
+bool stocklist::addstock(stock st) {
+    stockNode *sp = new stockNode();
+    sp->stk=st;
+    addtoList(sp);
+    return(true);
+}
 
 
 void stocklist::print_list()
@@ -52,7 +58,7 @@ void stocklist::print_list()
     cout << "List ~> ";
     stockNode *st = head;
     while (st != NULL) {
-        cout << st->stk<< " ===> ";
+        cout << "["<<st->stk<< "] ===> ";
         st = st->next;
     }
     cout<<endl;
@@ -68,8 +74,7 @@ stockNode* stocklist::mid_stock() {
         if (fast!=NULL) fast=fast->next;
         mid = mid+1;
     }
-    cout<< "The middle stock is => "<<slow->stk<<endl;
-    cout<<"It is at "<<mid<<"th position"<<endl;
+    cout<< "The middle stock is => ["<<slow->stk <<"] => located at the "<<mid<<"th position"<<endl;
     return slow;
 }
 
