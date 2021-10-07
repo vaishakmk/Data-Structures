@@ -15,11 +15,12 @@ private:
 public:
     stocklist();
     int getLength();
-    void addtoList(stockNode*);
-    bool addstock(stock);
-    bool addusingFile(string filename);
+    void addtoListbegin(stockNode*);
+    void addtoListend(stockNode*);
+    bool addstock(stock,int ch);
+    bool addusingFile(string filename,int ch);
     stockNode* mid_stock();
-    stockNode* split_list();
+    void split_list();
     void print_list();
 
 };

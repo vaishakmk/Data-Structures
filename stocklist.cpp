@@ -5,6 +5,7 @@
 #include "stocklist.h"
 #include<fstream>
 #include<sstream>
+#include<cstring>
 
 stocklist::stocklist() {
     head = NULL;
@@ -15,7 +16,7 @@ int stocklist::getLength() {
     return this->length;
 }
 
-void stocklist::addtoList(stockNode* s) {
+void stocklist::addtoListbegin(stockNode* s) {
     if(head==NULL)
     {
         s->prev=s->next=NULL;
@@ -33,7 +34,24 @@ void stocklist::addtoList(stockNode* s) {
     }
 }
 
-bool stocklist::addusingFile(string filename) {
+void stocklist::addtoListend(stockNode* s){
+    if(head==NULL)
+    {
+        s->prev=s->next=NULL;
+        head=tail=s;
+        this->length = this->length + 1;
+        return;
+    }else {
+        tail->next=s;
+        s->prev = tail;
+        tail= s;
+        this->length = this->length + 1;
+        return;
+    }
+
+}
+
+bool stocklist::addusingFile(string filename, int ch) {
     ifstream fin;
     string ss;
     stock s; string sym; double co;int no;
@@ -45,28 +63,35 @@ bool stocklist::addusingFile(string filename) {
             s.setstock(sym,co,no);
             stockNode *sp = new stockNode();
             sp->stk=s;
-            addtoList(sp);
+            if (ch==1) addtoListbegin(sp);
+            else if(ch==2) addtoListend(sp);
+            else{addtoListend(sp);}
+
         }
 fin.close();
 return(true);
 }
 
-bool stocklist::addstock(stock st) {
+bool stocklist::addstock(stock st,int ch) {
     stockNode *sp = new stockNode();
     sp->stk=st;
-    addtoList(sp);
+    if (ch==1) addtoListbegin(sp);
+    else if(ch==2) addtoListend(sp);
+    else addtoListend(sp);
     return(true);
 }
 
 
 void stocklist::print_list()
 {
-    cout << "List ~> ";
+    cout << "List : ";
     stockNode *st = head;
+    cout<<"Head";
     while (st != NULL) {
-        cout << "["<<st->stk<< "] ===> ";
+        cout << " ===> ["<<st->stk<< "] ";
         st = st->next;
     }
+    cout<<endl;
     cout<<endl;
     return;
 }
@@ -94,15 +119,15 @@ stockNode* stocklist::mid_stock() {
     return slow;
 }
 
-stockNode* stocklist::split_list() {
+void stocklist::split_list() {
     if (this->length == 0) {
         cout << "No items in the list. Cannot split" << endl;
-        return NULL;
+        return;
     }
 
     if (this->length == 1) {
         cout << "Only one item in the list. Cannot Split"<<endl;
-        return NULL ;
+        return ;
     }
     stockNode* mid = this->mid_stock();
     stocklist sl2;
@@ -114,5 +139,5 @@ stockNode* stocklist::split_list() {
     this->print_list();
     cout<<"Second list"<<endl;
     sl2.print_list();
-    return mid;
+    return;
 }
